@@ -29,10 +29,10 @@ const Hero = () => {
           </div>
 
           {/* Content */}
-          <div className="order-1 lg:order-2 text-center lg:text-left animate-fade-in-up">
+          <div className="order-1 lg:order-2 text-center lg:text-left animate-fade-in-up lg:pl-8">
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               <span className="block text-white">Hi, I'm</span>
-              <span className="block text-gradient">Gourab Ghosh</span>
+              <span className="block text-gradient whitespace-nowrap">Gourab Ghosh</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl">

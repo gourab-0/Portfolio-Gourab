@@ -1,8 +1,10 @@
+
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -10,18 +12,22 @@ const Contact = () => {
     subject: '',
     message: ''
   });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
     console.log('Form submitted:', formData);
   };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
-  return <section id="contact" className="py-20">
+
+  return (
+    <section id="contact" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-4">Get In Touch</h2>
@@ -84,7 +90,7 @@ const Contact = () => {
                 <Linkedin className="h-6 w-6 text-gray-400 hover:text-blue-400 transition-colors duration-300" />
               </a>
               <a href="#" className="bg-gray-800/50 p-3 rounded-lg hover:bg-gray-700 transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25">
-                <Twitter className="h-6 w-6 text-gray-400 hover:text-blue-400 transition-colors duration-300" />
+                <Instagram className="h-6 w-6 text-gray-400 hover:text-blue-400 transition-colors duration-300" />
               </a>
             </div>
           </div>
@@ -129,6 +135,8 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Contact;

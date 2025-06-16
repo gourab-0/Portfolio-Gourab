@@ -8,42 +8,42 @@ const Skills = () => {
       icon: Globe,
       color: "text-blue-400",
       bgColor: "bg-blue-500/10",
-      skills: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Vue.js"]
+      skills: ["React", "JavaScript", "HTML"]
     },
     {
       title: "Backend",
       icon: Server,
       color: "text-green-400",
       bgColor: "bg-green-500/10",
-      skills: ["Node.js", "Python", "Express", "Django", "PostgreSQL"]
+      skills: ["Node.js", "Python", "PHP"]
     },
     {
       title: "Database",
       icon: Database,
       color: "text-purple-400",
       bgColor: "bg-purple-500/10",
-      skills: ["MongoDB", "PostgreSQL", "Redis", "Firebase", "MySQL"]
+      skills: ["MongoDB", "MySQL", "PostgreSQL"]
     },
     {
       title: "Mobile",
       icon: Smartphone,
       color: "text-cyan-400",
       bgColor: "bg-cyan-500/10",
-      skills: ["React Native", "Flutter", "Expo", "iOS", "Android"]
+      skills: ["React Native", "Flutter", "Java"]
     },
     {
       title: "DevOps",
       icon: Code,
       color: "text-orange-400",
       bgColor: "bg-orange-500/10",
-      skills: ["Docker", "AWS", "CI/CD", "Kubernetes", "Linux"]
+      skills: ["Docker", "Git", "Linux"]
     },
     {
       title: "Design",
       icon: Palette,
       color: "text-pink-400",
       bgColor: "bg-pink-500/10",
-      skills: ["Figma", "Adobe XD", "UI/UX", "Photoshop", "Illustrator"]
+      skills: ["Figma", "Photoshop", "CSS"]
     }
   ];
 
@@ -94,11 +94,11 @@ const Skills = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               { skill: "React/TypeScript", level: 95 },
-              { skill: "Node.js/Express", level: 90 },
-              { skill: "Python/Django", level: 85 },
-              { skill: "Database Design", level: 88 },
+              { skill: "Node.js", level: 90 },
+              { skill: "Python", level: 85 },
+              { skill: "Cyber Security and Ethical Hacking", level: 85 },
               { skill: "UI/UX Design", level: 82 },
-              { skill: "Cloud/DevOps", level: 78 }
+              { skill: "C++ and Java", level: 78 }
             ].map((item, index) => (
               <div key={item.skill} className="group">
                 <div className="flex justify-between mb-2">
