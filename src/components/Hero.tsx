@@ -1,6 +1,5 @@
 
-import { ArrowDown, Download } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { ArrowDown } from 'lucide-react';
 
 const Hero = () => {
   return (
@@ -22,29 +21,12 @@ const Hero = () => {
         <div className="animate-fade-in-up">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             <span className="block text-white">Hi, I'm</span>
-            <span className="block text-gradient">Alex Johnson</span>
+            <span className="block text-gradient">Gourab Ghosh</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Full-Stack Developer crafting digital experiences with modern technologies
+            Front-End Developer crafting digital experiences with modern technologies
           </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button 
-              size="lg" 
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25"
-            >
-              <Download className="mr-2 h-5 w-5" />
-              Download CV
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="border-gray-600 text-gray-300 hover:bg-gray-800 px-8 py-3 rounded-lg transition-all duration-300 transform hover:scale-105"
-            >
-              View Projects
-            </Button>
-          </div>
 
           {/* 3D Floating Code Block */}
           <div className="perspective-1000 mx-auto w-fit">
@@ -53,8 +35,8 @@ const Hero = () => {
               <div className="text-blue-400">const <span className="text-yellow-400">developer</span> = {'{'}
               </div>
               <div className="ml-4 text-gray-300">
-                <div>name: <span className="text-orange-400">&quot;Alex Johnson&quot;</span>,</div>
-                <div>skills: [<span className="text-orange-400">&quot;React&quot;, &quot;Node.js&quot;, &quot;Python&quot;</span>],</div>
+                <div>name: <span className="text-orange-400">&quot;Gourab Ghosh&quot;</span>,</div>
+                <div>skills: [<span className="text-orange-400">&quot;React&quot;, &quot;JavaScript&quot;, &quot;TypeScript&quot;</span>],</div>
                 <div>passion: <span className="text-orange-400">&quot;Building amazing web apps&quot;</span></div>
               </div>
               <div className="text-blue-400">{'}'}</div>
