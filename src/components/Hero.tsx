@@ -16,31 +16,31 @@ const Hero = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Profile Image Circle */}
-          <div className="order-2 lg:order-1 flex justify-center lg:justify-start">
-            <div className="w-80 h-80 rounded-full border-4 border-white/30 bg-transparent overflow-hidden shadow-2xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
+          {/* Profile Image Circle with Animation */}
+          <div className="order-2 lg:order-1 flex justify-center lg:justify-start animate-fade-in-up">
+            <div className="w-80 h-80 rounded-full border-4 border-white/30 bg-transparent overflow-hidden shadow-2xl animate-pulse hover:animate-bounce transition-all duration-300 hover:scale-105 hover:shadow-blue-500/50">
               <img
                 src="/lovable-uploads/df794581-f6da-4817-af58-ed51a85d83b3.png"
                 alt="Gourab Ghosh"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover animate-fade-in"
               />
             </div>
           </div>
 
-          {/* Content */}
-          <div className="order-1 lg:order-2 text-center lg:text-left animate-fade-in-up lg:pl-8">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+          {/* Content - shifted closer to image */}
+          <div className="order-1 lg:order-2 text-center lg:text-left animate-slide-in-right lg:pl-2">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <span className="block text-white">Hi, I'm</span>
-              <span className="block text-gradient whitespace-nowrap">Gourab Ghosh</span>
+              <span className="block text-gradient">Gourab Ghosh</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl">
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
               Front-End Developer crafting digital experiences with modern technologies
             </p>
 
             {/* 3D Floating Code Block */}
-            <div className="perspective-1000 w-fit mx-auto lg:mx-0">
+            <div className="perspective-1000 w-fit mx-auto lg:mx-0 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
               <div className="card-3d bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 font-mono text-sm text-left max-w-md">
                 <div className="text-green-400 mb-2">// Welcome to my portfolio</div>
                 <div className="text-blue-400">const <span className="text-yellow-400">developer</span> = {'{'}
