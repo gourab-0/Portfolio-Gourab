@@ -77,21 +77,24 @@ const Projects = () => {
               className={`group perspective-1000 ${project.featured ? 'md:col-span-2 lg:col-span-1' : ''}`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="card-3d bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl overflow-hidden h-full hover:border-gray-600 transition-all duration-300">
+              <div className="relative bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 rounded-2xl overflow-hidden h-full hover:border-blue-500/50 transition-all duration-500 transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20">
+                {/* Glassmorphism background overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-purple-600/5 to-cyan-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
                 {/* Project Image */}
-                <div className="relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                <div className="relative overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent"></div>
                   
                   {/* Overlay Buttons */}
-                  <div className="absolute inset-0 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute inset-0 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
                     <Button
                       size="sm"
-                      className="bg-blue-600 hover:bg-blue-700 text-white"
+                      className="bg-blue-600/90 hover:bg-blue-600 text-white backdrop-blur-sm border border-blue-400/30 shadow-lg"
                     >
                       <Play className="h-4 w-4 mr-1" />
                       Demo
@@ -99,7 +102,7 @@ const Projects = () => {
                     <Button
                       size="sm"
                       variant="outline"
-                      className="border-white text-white hover:bg-white hover:text-gray-900"
+                      className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm shadow-lg"
                     >
                       <Github className="h-4 w-4 mr-1" />
                       Code
@@ -108,19 +111,19 @@ const Projects = () => {
                 </div>
 
                 {/* Project Content */}
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-200">
+                <div className="p-6 relative z-10">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
                       {project.title}
                     </h3>
                     {project.featured && (
-                      <span className="px-2 py-1 bg-blue-600 text-white text-xs rounded-full">
+                      <span className="px-3 py-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs rounded-full shadow-lg">
                         Featured
                       </span>
                     )}
                   </div>
                   
-                  <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                  <p className="text-gray-300 text-sm mb-4 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
                     {project.description}
                   </p>
 
@@ -129,7 +132,7 @@ const Projects = () => {
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 bg-gray-700/50 text-gray-300 text-xs rounded border border-gray-600 hover:border-blue-400 hover:text-blue-400 transition-colors duration-200"
+                        className="px-3 py-1 bg-gray-700/60 backdrop-blur-sm text-gray-300 text-xs rounded-lg border border-gray-600/50 hover:border-blue-400/50 hover:text-blue-300 hover:bg-blue-600/10 transition-all duration-300"
                       >
                         {tech}
                       </span>
@@ -137,19 +140,19 @@ const Projects = () => {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex space-x-3">
+                  <div className="flex space-x-4 pt-2">
                     <a
                       href={project.liveUrl}
-                      className="flex items-center text-blue-400 hover:text-blue-300 text-sm transition-colors duration-200"
+                      className="flex items-center text-blue-400 hover:text-blue-300 text-sm transition-colors duration-300 group/link"
                     >
-                      <ExternalLink className="h-4 w-4 mr-1" />
+                      <ExternalLink className="h-4 w-4 mr-1 transition-transform duration-300 group-hover/link:scale-110" />
                       Live Demo
                     </a>
                     <a
                       href={project.githubUrl}
-                      className="flex items-center text-gray-400 hover:text-gray-300 text-sm transition-colors duration-200"
+                      className="flex items-center text-gray-400 hover:text-gray-300 text-sm transition-colors duration-300 group/link"
                     >
-                      <Github className="h-4 w-4 mr-1" />
+                      <Github className="h-4 w-4 mr-1 transition-transform duration-300 group-hover/link:scale-110" />
                       View Code
                     </a>
                   </div>
