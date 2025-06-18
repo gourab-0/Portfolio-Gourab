@@ -3,17 +3,19 @@ import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
+
 interface Message {
   id: string;
   content: string;
   role: 'user' | 'assistant';
   timestamp: Date;
 }
+
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([{
     id: '1',
-    content: "Hi! I'm your AI assistant. How can I help you today?",
+    content: "Hi! I'm Gourab Ghosh. How can I help you today?",
     role: 'assistant',
     timestamp: new Date()
   }]);
@@ -23,25 +25,31 @@ const ChatBot = () => {
   const {
     toast
   } = useToast();
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({
       behavior: 'smooth'
     });
   };
+
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
   const sendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
+
     const userMessage: Message = {
       id: Date.now().toString(),
       content: inputMessage,
       role: 'user',
       timestamp: new Date()
     };
+
     setMessages(prev => [...prev, userMessage]);
     setInputMessage('');
     setIsLoading(true);
+
     try {
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
@@ -53,7 +61,7 @@ const ChatBot = () => {
           model: 'gpt-3.5-turbo',
           messages: [{
             role: 'system',
-            content: 'You are a helpful AI assistant for Gourab Ghosh\'s portfolio website. Be friendly, concise, and helpful.'
+            content: 'You are Gourab Ghosh, a web developer and software engineer. Respond as if you are Gourab himself, not an AI assistant. Share information about your skills, projects, experience, and background. Be personal and authentic in your responses. Talk about your work, your passion for technology, and answer questions as if visitors are speaking directly with you.'
           }, ...messages.map(msg => ({
             role: msg.role,
             content: msg.content
@@ -65,17 +73,21 @@ const ChatBot = () => {
           temperature: 0.7
         })
       });
+
       if (!response.ok) {
         throw new Error('Failed to get response from AI');
       }
+
       const data = await response.json();
       const aiResponse = data.choices[0]?.message?.content || 'Sorry, I couldn\'t generate a response.';
+
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         content: aiResponse,
         role: 'assistant',
         timestamp: new Date()
       };
+
       setMessages(prev => [...prev, assistantMessage]);
     } catch (error) {
       console.error('Error sending message:', error);
@@ -88,12 +100,14 @@ const ChatBot = () => {
       setIsLoading(false);
     }
   };
+
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       sendMessage();
     }
   };
+
   return <>
       {/* Floating Chat Button */}
       <div className="fixed bottom-6 right-6 z-50">
@@ -149,4 +163,5 @@ const ChatBot = () => {
         </div>}
     </>;
 };
+
 export default ChatBot;
