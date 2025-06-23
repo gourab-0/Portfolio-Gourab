@@ -1,4 +1,5 @@
 
+
 const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -19,7 +20,7 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
           {/* Profile Image Circle with Animation */}
           <div className="order-2 lg:order-1 flex justify-center lg:justify-start animate-fade-in-up">
-            <div className="w-80 h-80 rounded-full border-4 border-white/30 bg-transparent overflow-hidden shadow-2xl hover:animate-bounce transition-all duration-300 hover:scale-105 hover:shadow-blue-500/50">
+            <div className="w-80 h-80 rounded-full border-4 border-white/30 bg-transparent overflow-hidden shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-blue-500/50">
               <img
                 src="/lovable-uploads/df794581-f6da-4817-af58-ed51a85d83b3.png"
                 alt="Gourab Ghosh"
@@ -61,3 +62,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
