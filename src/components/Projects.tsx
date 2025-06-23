@@ -26,8 +26,8 @@ const Projects = () => {
       description: "Classic Ludo board game implementation with multiplayer support, dice mechanics, player turns, and complete game logic built in Python.",
       image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=400&fit=crop",
       technologies: ["Python", "Pygame", "Tkinter"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: "https://github.com/gourab-0/ludo-python-master/blob/main/README.md",
+      githubUrl: "https://github.com/gourab-0/ludo-python-master",
       featured: true
     },
     {
