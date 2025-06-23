@@ -10,7 +10,8 @@ const Projects = () => {
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
       technologies: ["HTML", "CSS", "JavaScript"],
       liveUrl: "#",
-      githubUrl: "#"
+      githubUrl: "#",
+      featured: false
     },
     {
       title: "3D Todo List Web App",
@@ -18,7 +19,8 @@ const Projects = () => {
       image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
       technologies: ["HTML", "CSS", "JavaScript"],
       liveUrl: "#",
-      githubUrl: "#"
+      githubUrl: "#",
+      featured: false
     },
     {
       title: "Flappy Bird Game",
@@ -26,7 +28,8 @@ const Projects = () => {
       image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=400&fit=crop",
       technologies: ["HTML", "CSS", "JavaScript"],
       liveUrl: "#",
-      githubUrl: "#"
+      githubUrl: "#",
+      featured: false
     },
     {
       title: "Static Event Manager",
@@ -34,7 +37,8 @@ const Projects = () => {
       image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&h=400&fit=crop",
       technologies: ["HTML", "CSS", "JavaScript"],
       liveUrl: "#",
-      githubUrl: "#"
+      githubUrl: "#",
+      featured: true
     },
     {
       title: "Gym Website",
@@ -42,7 +46,8 @@ const Projects = () => {
       image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=400&fit=crop",
       technologies: ["HTML", "CSS", "JavaScript"],
       liveUrl: "#",
-      githubUrl: "#"
+      githubUrl: "#",
+      featured: false
     },
     {
       title: "Secure Login System",
@@ -50,7 +55,8 @@ const Projects = () => {
       image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=400&fit=crop",
       technologies: ["Python", "Flask", "SQLite", "Bcrypt"],
       liveUrl: "#",
-      githubUrl: "#"
+      githubUrl: "#",
+      featured: true
     }
   ];
 
@@ -68,7 +74,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className="group perspective-1000"
+              className={`group perspective-1000 ${project.featured ? 'md:col-span-2 lg:col-span-1' : ''}`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="relative bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 rounded-2xl overflow-hidden h-full hover:border-blue-500/50 transition-all duration-500 transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20">
@@ -110,6 +116,11 @@ const Projects = () => {
                     <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
                       {project.title}
                     </h3>
+                    {project.featured && (
+                      <span className="px-3 py-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs rounded-full shadow-lg">
+                        Featured
+                      </span>
+                    )}
                   </div>
                   
                   <p className="text-gray-300 text-sm mb-4 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
