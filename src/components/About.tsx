@@ -19,7 +19,7 @@ const About = () => {
               <div className="glow-border group">
                 <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 p-1 rounded-2xl">
                   <img 
-                    src="/lovable-uploads/df794581-f6da-4817-af58-ed51a85d83b3.png" 
+                    src="/lovable-uploads/8d0a4f6f-35f0-40ee-873e-535d3283bb98.png" 
                     alt="Gourab Ghosh" 
                     className="w-full h-[400px] object-cover rounded-xl" 
                   />
