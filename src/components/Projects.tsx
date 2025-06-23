@@ -17,26 +17,26 @@ const Projects = () => {
       description: "Interactive 3D todo list application with stunning visual effects, drag-and-drop functionality, and smooth animations for task management.",
       image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
       technologies: ["HTML", "CSS", "JavaScript"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: "https://gourab-0.github.io/3d-todolist-webapp/",
+      githubUrl: "https://github.com/gourab-0/3d-todolist-webapp",
       featured: false
     },
     {
-      title: "Flappy Bird Game",
-      description: "Classic Flappy Bird game recreation with smooth gameplay mechanics, collision detection, score tracking, and responsive controls.",
+      title: "Ludo Game in Python Master",
+      description: "Classic Ludo board game implementation with multiplayer support, dice mechanics, player turns, and complete game logic built in Python.",
       image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=400&fit=crop",
-      technologies: ["HTML", "CSS", "JavaScript"],
+      technologies: ["Python", "Pygame", "Tkinter"],
       liveUrl: "#",
       githubUrl: "#",
-      featured: false
+      featured: true
     },
     {
       title: "Static Event Manager",
       description: "Event management website with event listings, registration forms, schedule display, and responsive design for organizing and showcasing events.",
       image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&h=400&fit=crop",
       technologies: ["HTML", "CSS", "JavaScript"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: "https://gourab-0.github.io/static-event-manager/",
+      githubUrl: "https://github.com/gourab-0/static-event-manager",
       featured: true
     },
     {
@@ -44,8 +44,8 @@ const Projects = () => {
       description: "Modern gym website with membership plans, trainer profiles, class schedules, and facility showcase with responsive design and smooth animations.",
       image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=400&fit=crop",
       technologies: ["HTML", "CSS", "JavaScript"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: "https://gourab-0.github.io/GYM-website/",
+      githubUrl: "https://github.com/gourab-0/GYM-website",
       featured: false
     },
     {
