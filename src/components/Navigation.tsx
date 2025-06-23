@@ -52,7 +52,12 @@ const Navigation = () => {
 
           {/* Social Links */}
           <div className="hidden md:flex items-center space-x-4">
-            <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors duration-200">
+            <a 
+              href="https://github.com/gourab-0/gourab-0" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
+            >
               <Github className="h-5 w-5" />
             </a>
             <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors duration-200">
