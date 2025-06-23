@@ -1,6 +1,5 @@
-
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Bot, User, AlertTriangle } from 'lucide-react';
+import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
@@ -16,14 +15,16 @@ const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([{
     id: '1',
-    content: "Hi! I'm Gourab Ghosh. The chat feature is currently disabled for security reasons. Please use the contact form below to get in touch!",
+    content: "Hi! I'm Gourab Ghosh. How can I help you today?",
     role: 'assistant',
     timestamp: new Date()
   }]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({
@@ -38,13 +39,66 @@ const ChatBot = () => {
   const sendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
 
-    toast({
-      title: "Feature Temporarily Disabled",
-      description: "Chat functionality is currently disabled for security reasons. Please use the contact form to reach out!",
-      variant: "destructive"
-    });
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      content: inputMessage,
+      role: 'user',
+      timestamp: new Date()
+    };
 
+    setMessages(prev => [...prev, userMessage]);
     setInputMessage('');
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer sk-abcd1234abcd1234abcd1234abcd1234abcd1234'
+        },
+        body: JSON.stringify({
+          model: 'gpt-3.5-turbo',
+          messages: [{
+            role: 'system',
+            content: 'You are Gourab Ghosh, a web developer and software engineer. Respond as if you are Gourab himself, not an AI assistant. Share information about your skills, projects, experience, and background. Be personal and authentic in your responses. Talk about your work, your passion for technology, and answer questions as if visitors are speaking directly with you.'
+          }, ...messages.map(msg => ({
+            role: msg.role,
+            content: msg.content
+          })), {
+            role: 'user',
+            content: inputMessage
+          }],
+          max_tokens: 150,
+          temperature: 0.7
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get response from AI');
+      }
+
+      const data = await response.json();
+      const aiResponse = data.choices[0]?.message?.content || 'Sorry, I couldn\'t generate a response.';
+
+      const assistantMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        content: aiResponse,
+        role: 'assistant',
+        timestamp: new Date()
+      };
+
+      setMessages(prev => [...prev, assistantMessage]);
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -67,8 +121,8 @@ const ChatBot = () => {
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-gray-700">
             <div className="flex items-center space-x-2">
-              <AlertTriangle className="h-5 w-5 text-yellow-400" />
-              <span className="text-white font-medium">Chat Disabled</span>
+              <Bot className="h-5 w-5 text-blue-400" />
+              <span className="text-white font-medium">Chat with Gourab</span>
             </div>
             <Button variant="ghost" size="sm" onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-white">
               <X className="h-4 w-4" />
@@ -86,28 +140,25 @@ const ChatBot = () => {
                   </div>
                 </div>
               </div>)}
+            {isLoading && <div className="flex justify-start">
+                <div className="bg-gray-700 text-gray-100 p-3 rounded-lg max-w-[70%]">
+                  <div className="flex items-center space-x-2">
+                    <Bot className="h-4 w-4 text-blue-400" />
+                    <span className="text-sm">Typing...</span>
+                  </div>
+                </div>
+              </div>}
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input - Disabled */}
+          {/* Input */}
           <div className="p-4 border-t border-gray-700">
             <div className="flex space-x-2">
-              <Input 
-                value={inputMessage} 
-                onChange={e => setInputMessage(e.target.value)} 
-                onKeyPress={handleKeyPress} 
-                placeholder="Chat disabled - use contact form..." 
-                className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-yellow-400" 
-                disabled={true}
-              />
-              <Button onClick={sendMessage} disabled={true} className="bg-gray-600 cursor-not-allowed">
+              <Input value={inputMessage} onChange={e => setInputMessage(e.target.value)} onKeyPress={handleKeyPress} placeholder="Type your message..." className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400" disabled={isLoading} />
+              <Button onClick={sendMessage} disabled={!inputMessage.trim() || isLoading} className="bg-blue-600 hover:bg-blue-700">
                 <Send className="h-4 w-4" />
               </Button>
             </div>
-            <p className="text-xs text-yellow-400 mt-2 flex items-center">
-              <AlertTriangle className="h-3 w-3 mr-1" />
-              Use the contact form for secure communication
-            </p>
           </div>
         </div>}
     </>;
