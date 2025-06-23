@@ -1,6 +1,5 @@
-
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Instagram } from 'lucide-react';
+import { Phone, MapPin, Send, Github, Linkedin, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -94,16 +93,6 @@ const Contact = () => {
 
             {/* Contact Details */}
             <div className="space-y-6">
-              <div className="flex items-center space-x-4 group">
-                <div className="bg-blue-600/20 p-3 rounded-lg group-hover:bg-blue-600/30 transition-colors duration-300">
-                  <Mail className="h-6 w-6 text-blue-400" />
-                </div>
-                <div>
-                  <div className="text-sm text-gray-400">Email</div>
-                  <div className="text-white font-medium">gourabghosh828@gmail.com</div>
-                </div>
-              </div>
-
               <div className="flex items-center space-x-4 group">
                 <div className="bg-green-600/20 p-3 rounded-lg group-hover:bg-green-600/30 transition-colors duration-300">
                   <Phone className="h-6 w-6 text-green-400" />
