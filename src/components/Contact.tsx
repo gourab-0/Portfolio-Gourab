@@ -1,75 +1,9 @@
 
-import { useState } from 'react';
-import { Phone, MapPin, Send, Github, Linkedin, Instagram } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import emailjs from '@emailjs/browser';
-import { useToast } from '@/hooks/use-toast';
+import ContactInfo from './ContactInfo';
+import ContactForm from './ContactForm';
+import SocialLinks from './SocialLinks';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-  const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    try {
-      const result = await emailjs.send(
-        'service_r7y25no', // service ID
-        'template_1swguif', // template ID
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          to_name: 'Gourab Ghosh',
-        },
-        'b3Qvp_nEoXiaj6Xp5' // public key
-      );
-
-      console.log('Email sent successfully:', result);
-      
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for your message. I'll get back to you soon!",
-      });
-
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-
-    } catch (error) {
-      console.error('Failed to send email:', error);
-      
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please try again or contact me directly.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
   return (
     <section id="contact" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -82,151 +16,13 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Info */}
-          <div className="space-y-8">
-            <div className="animate-slide-in-left">
-              <h3 className="text-2xl font-bold text-white mb-6">Let's Talk</h3>
-              <p className="text-gray-300 text-lg leading-relaxed mb-8">
-                I'm always interested in hearing about new opportunities and exciting projects. 
-                Whether you're a company looking to hire, or you're a fellow developer who wants 
-                to collaborate, I'd love to hear from you.
-              </p>
-            </div>
-
-            {/* Contact Details */}
-            <div className="space-y-6">
-              <div className="flex items-center space-x-4 group">
-                <div className="bg-green-600/20 p-3 rounded-lg group-hover:bg-green-600/30 transition-colors duration-300">
-                  <Phone className="h-6 w-6 text-green-400" />
-                </div>
-                <div>
-                  <div className="text-sm text-gray-400">Phone</div>
-                  <div className="text-white font-medium">+91 9730245315</div>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-4 group">
-                <div className="bg-purple-600/20 p-3 rounded-lg group-hover:bg-purple-600/30 transition-colors duration-300">
-                  <MapPin className="h-6 w-6 text-purple-400" />
-                </div>
-                <div>
-                  <div className="text-sm text-gray-400">Location</div>
-                  <div className="text-white font-medium">Mumbai, India</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Social Links */}
-            <div className="flex space-x-4 pt-8">
-              <a 
-                href="https://github.com/gourab-0/gourab-0" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-gray-800/50 p-3 rounded-lg hover:bg-gray-700 transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25"
-              >
-                <Github className="h-6 w-6 text-gray-400 hover:text-blue-400 transition-colors duration-300" />
-              </a>
-              <a 
-                href="https://www.linkedin.com/in/gourab-ghosh-327499278" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-gray-800/50 p-3 rounded-lg hover:bg-gray-700 transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25"
-              >
-                <Linkedin className="h-6 w-6 text-gray-400 hover:text-blue-400 transition-colors duration-300" />
-              </a>
-              <a 
-                href="https://www.instagram.com/gourabghosh25_?igsh=cHB5aXdmNjh2b2p3" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-gray-800/50 p-3 rounded-lg hover:bg-gray-700 transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25"
-              >
-                <Instagram className="h-6 w-6 text-gray-400 hover:text-blue-400 transition-colors duration-300" />
-              </a>
-            </div>
+          <div>
+            <ContactInfo />
+            <SocialLinks />
           </div>
 
           {/* Contact Form */}
-          <div className="perspective-1000">
-            <form onSubmit={handleSubmit} className="card-3d bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-8 space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                    Name
-                  </label>
-                  <Input 
-                    type="text" 
-                    id="name" 
-                    name="name" 
-                    value={formData.name} 
-                    onChange={handleChange} 
-                    className="bg-gray-700/50 border-gray-600 text-white focus:border-blue-400 focus:ring-blue-400" 
-                    placeholder="Your Name" 
-                    required 
-                    disabled={isLoading}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                    Email
-                  </label>
-                  <Input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    value={formData.email} 
-                    onChange={handleChange} 
-                    className="bg-gray-700/50 border-gray-600 text-white focus:border-blue-400 focus:ring-blue-400" 
-                    placeholder="your.email@example.com" 
-                    required 
-                    disabled={isLoading}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
-                  Subject
-                </label>
-                <Input 
-                  type="text" 
-                  id="subject" 
-                  name="subject" 
-                  value={formData.subject} 
-                  onChange={handleChange} 
-                  className="bg-gray-700/50 border-gray-600 text-white focus:border-blue-400 focus:ring-blue-400" 
-                  placeholder="What's this about?" 
-                  required 
-                  disabled={isLoading}
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                  Message
-                </label>
-                <Textarea 
-                  id="message" 
-                  name="message" 
-                  value={formData.message} 
-                  onChange={handleChange} 
-                  rows={5} 
-                  className="bg-gray-700/50 border-gray-600 text-white focus:border-blue-400 focus:ring-blue-400 resize-none" 
-                  placeholder="Tell me about your project..." 
-                  required 
-                  disabled={isLoading}
-                />
-              </div>
-
-              <Button 
-                type="submit" 
-                size="lg" 
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25"
-                disabled={isLoading}
-              >
-                <Send className="h-5 w-5 mr-2" />
-                {isLoading ? 'Sending...' : 'Send Message'}
-              </Button>
-            </form>
-          </div>
+          <ContactForm />
         </div>
       </div>
     </section>
