@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Code, Github, Linkedin, Mail } from 'lucide-react';
+import { Menu, X, Code, Github, Linkedin, Instagram } from 'lucide-react';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,11 +60,21 @@ const Navigation = () => {
             >
               <Github className="h-5 w-5" />
             </a>
-            <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors duration-200">
+            <a 
+              href="https://www.linkedin.com/in/gourab-ghosh-327499278" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
+            >
               <Linkedin className="h-5 w-5" />
             </a>
-            <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors duration-200">
-              <Mail className="h-5 w-5" />
+            <a 
+              href="https://www.instagram.com/gourabghosh25_?igsh=cHB5aXdmNjh2b2p3" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
+            >
+              <Instagram className="h-5 w-5" />
             </a>
           </div>
 

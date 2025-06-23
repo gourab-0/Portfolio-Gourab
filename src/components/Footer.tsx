@@ -1,5 +1,5 @@
 
-import { Code, Heart, Github } from 'lucide-react';
+import { Code, Heart, Github, Linkedin, Instagram } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -9,14 +9,32 @@ const Footer = () => {
           <div className="flex items-center space-x-2 mb-4 md:mb-0">
             <Code className="h-6 w-6 text-blue-400" />
             <span className="text-white font-semibold">Gourab Ghosh</span>
-            <a 
-              href="https://github.com/gourab-0/gourab-0" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="ml-3 text-gray-400 hover:text-blue-400 transition-colors duration-200"
-            >
-              <Github className="h-5 w-5" />
-            </a>
+            <div className="flex items-center space-x-3 ml-3">
+              <a 
+                href="https://github.com/gourab-0/gourab-0" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
+              >
+                <Github className="h-5 w-5" />
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/gourab-ghosh-327499278" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a 
+                href="https://www.instagram.com/gourabghosh25_?igsh=cHB5aXdmNjh2b2p3" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+            </div>
           </div>
           
           <div className="flex items-center space-x-2 text-gray-400">
