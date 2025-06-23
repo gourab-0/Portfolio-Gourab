@@ -1,4 +1,3 @@
-
 import { ExternalLink, Github, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -6,54 +5,54 @@ const Projects = () => {
   const projects = [
     {
       title: "E-Commerce Platform",
-      description: "Full-stack e-commerce solution with React, Node.js, and Stripe integration. Features include user authentication, product management, and real-time inventory tracking.",
+      description: "Frontend-only e-commerce website with responsive design, product catalog, shopping cart functionality, and modern user interface built with vanilla web technologies.",
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
+      technologies: ["HTML", "CSS", "JavaScript"],
       liveUrl: "#",
       githubUrl: "#",
       featured: true
     },
     {
-      title: "Task Management App",
-      description: "Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
+      title: "3D Todo List Web App",
+      description: "Interactive 3D todo list application with stunning visual effects, drag-and-drop functionality, and smooth animations for task management.",
       image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
-      technologies: ["React", "Firebase", "Material-UI", "Socket.io"],
+      technologies: ["HTML", "CSS", "JavaScript"],
       liveUrl: "#",
       githubUrl: "#",
       featured: false
     },
     {
-      title: "Weather Dashboard",
-      description: "Beautiful weather dashboard with location-based forecasts, interactive maps, and detailed weather analytics.",
-      image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=600&h=400&fit=crop",
-      technologies: ["Vue.js", "TypeScript", "Chart.js", "OpenWeather API"],
+      title: "Flappy Bird Game",
+      description: "Classic Flappy Bird game recreation with smooth gameplay mechanics, collision detection, score tracking, and responsive controls.",
+      image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=400&fit=crop",
+      technologies: ["HTML", "CSS", "JavaScript"],
       liveUrl: "#",
       githubUrl: "#",
       featured: false
     },
     {
-      title: "Social Media Analytics",
-      description: "Comprehensive social media analytics platform with data visualization, reporting, and automated insights generation.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
-      technologies: ["React", "D3.js", "Python", "PostgreSQL", "AWS"],
+      title: "Static Event Manager",
+      description: "Event management website with event listings, registration forms, schedule display, and responsive design for organizing and showcasing events.",
+      image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&h=400&fit=crop",
+      technologies: ["HTML", "CSS", "JavaScript"],
       liveUrl: "#",
       githubUrl: "#",
       featured: true
     },
     {
-      title: "Cryptocurrency Tracker",
-      description: "Real-time cryptocurrency price tracker with portfolio management, price alerts, and market analysis tools.",
-      image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&h=400&fit=crop",
-      technologies: ["React Native", "Redux", "CoinGecko API", "Chart.js"],
+      title: "Gym Website",
+      description: "Modern gym website with membership plans, trainer profiles, class schedules, and facility showcase with responsive design and smooth animations.",
+      image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=400&fit=crop",
+      technologies: ["HTML", "CSS", "JavaScript"],
       liveUrl: "#",
       githubUrl: "#",
       featured: false
     },
     {
-      title: "Learning Management System",
-      description: "Complete LMS with course creation, student progress tracking, interactive quizzes, and video streaming capabilities.",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop",
-      technologies: ["Next.js", "Prisma", "PostgreSQL", "Stripe", "AWS S3"],
+      title: "Secure Login System",
+      description: "Cybersecurity-focused secure login system with advanced authentication, password hashing, session management, and security vulnerability protection.",
+      image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=400&fit=crop",
+      technologies: ["Python", "Flask", "SQLite", "Bcrypt"],
       liveUrl: "#",
       githubUrl: "#",
       featured: true
