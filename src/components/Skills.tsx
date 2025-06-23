@@ -22,14 +22,14 @@ const Skills = () => {
       icon: Database,
       color: "text-purple-400",
       bgColor: "bg-purple-500/10",
-      skills: ["MongoDB", "MySQL", "PostgreSQL"]
+      skills: ["MongoDB", "MySQL", "SQLite"]
     },
     {
       title: "Mobile",
       icon: Smartphone,
       color: "text-cyan-400",
       bgColor: "bg-cyan-500/10",
-      skills: ["React Native", "Flutter", "Java"]
+      skills: ["React Native", "Flutter", "Android Studio"]
     },
     {
       title: "DevOps",
@@ -93,12 +93,12 @@ const Skills = () => {
           <h3 className="text-2xl font-bold text-white text-center mb-8">Proficiency Levels</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { skill: "React/TypeScript", level: 95 },
-              { skill: "Node.js", level: 90 },
+              { skill: "React/TypeScript", level: 75 },
+              { skill: "Node.js", level: 70 },
               { skill: "Python", level: 85 },
               { skill: "Cyber Security and Ethical Hacking", level: 85 },
-              { skill: "UI/UX Design", level: 82 },
-              { skill: "C++ and Java", level: 78 }
+              { skill: "UI/UX Design", level: 70 },
+              { skill: "C++ and Java", level: 85 }
             ].map((item, index) => (
               <div key={item.skill} className="group">
                 <div className="flex justify-between mb-2">
