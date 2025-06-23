@@ -53,8 +53,8 @@ const Projects = () => {
       description: "Cybersecurity-focused secure login system with advanced authentication, password hashing, session management, and security vulnerability protection.",
       image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=400&fit=crop",
       technologies: ["Python", "Flask", "SQLite", "Bcrypt"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: "https://github.com/gourab-0/secure-login-system/blob/main/README.md",
+      githubUrl: "https://github.com/gourab-0/secure-login-system",
       featured: true
     }
   ];
