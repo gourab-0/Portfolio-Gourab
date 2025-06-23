@@ -13,15 +13,16 @@ const About = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Profile Image with 3D Effect - Made smaller */}
+          {/* Profile Image with 3D Effect - Made smaller and centered */}
           <div className="relative group perspective-1000">
             <div className="card-3d w-full max-w-sm mx-auto">
               <div className="glow-border group">
                 <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 p-1 rounded-2xl">
                   <img 
-                    src="/lovable-uploads/8d0a4f6f-35f0-40ee-873e-535d3283bb98.png" 
+                    src="/lovable-uploads/6e75bf89-e2a0-440a-b83c-f7e4021a6186.png" 
                     alt="Gourab Ghosh" 
-                    className="w-full h-[400px] object-cover rounded-xl" 
+                    className="w-full h-[400px] object-cover rounded-xl object-center" 
+                    style={{ objectPosition: 'center top' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent rounded-xl"></div>
                 </div>

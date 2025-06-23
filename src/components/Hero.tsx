@@ -1,3 +1,4 @@
+
 const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -20,9 +21,10 @@ const Hero = () => {
           <div className="order-2 lg:order-1 flex justify-center lg:justify-start animate-fade-in-up">
             <div className="w-80 h-80 rounded-full border-4 border-white/30 bg-transparent overflow-hidden shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-blue-500/50">
               <img
-                src="/lovable-uploads/8d0a4f6f-35f0-40ee-873e-535d3283bb98.png"
+                src="/lovable-uploads/6e75bf89-e2a0-440a-b83c-f7e4021a6186.png"
                 alt="Gourab Ghosh"
-                className="w-full h-full object-cover animate-fade-in"
+                className="w-full h-full object-cover object-center animate-fade-in"
+                style={{ objectPosition: 'center top' }}
               />
             </div>
           </div>
