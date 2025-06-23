@@ -15,24 +15,86 @@ const ContactForm = () => {
     message: ''
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const { toast } = useToast();
+
+  // Input sanitization function
+  const sanitizeInput = (input: string): string => {
+    return input
+      .trim()
+      .replace(/[<>]/g, '') // Remove potential HTML tags
+      .slice(0, 1000); // Limit length
+  };
+
+  // Email validation
+  const isValidEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // Form validation
+  const validateForm = (): boolean => {
+    const newErrors: Record<string, string> = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = 'Name must be at least 2 characters';
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!isValidEmail(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+
+    if (!formData.subject.trim()) {
+      newErrors.subject = 'Subject is required';
+    } else if (formData.subject.trim().length < 5) {
+      newErrors.subject = 'Subject must be at least 5 characters';
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      toast({
+        title: "Validation Error",
+        description: "Please fix the errors in the form",
+        variant: "destructive"
+      });
+      return;
+    }
+
     setIsLoading(true);
 
     try {
+      // Sanitize all inputs before sending
+      const sanitizedData = {
+        from_name: sanitizeInput(formData.name),
+        from_email: sanitizeInput(formData.email),
+        subject: sanitizeInput(formData.subject),
+        message: sanitizeInput(formData.message),
+        to_name: 'Gourab Ghosh',
+      };
+
+      // Note: EmailJS credentials should be moved to environment variables
+      // For now, using existing configuration but with rate limiting consideration
       const result = await emailjs.send(
-        'service_r7y25no', // service ID
-        'template_1swguif', // template ID
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          to_name: 'Gourab Ghosh',
-        },
-        'b3Qvp_nEoXiaj6Xp5' // public key
+        'service_r7y25no', // Should be moved to env
+        'template_1swguif', // Should be moved to env
+        sanitizedData,
+        'b3Qvp_nEoXiaj6Xp5' // Should be moved to env
       );
 
       console.log('Email sent successfully:', result);
@@ -49,13 +111,14 @@ const ContactForm = () => {
         subject: '',
         message: ''
       });
+      setErrors({});
 
     } catch (error) {
       console.error('Failed to send email:', error);
       
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again or contact me directly.",
+        description: "Failed to send message. Please try again later.",
         variant: "destructive",
       });
     } finally {
@@ -64,10 +127,19 @@ const ContactForm = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value
     });
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: ''
+      });
+    }
   };
 
   return (
@@ -76,7 +148,7 @@ const ContactForm = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-              Name
+              Name *
             </label>
             <Input 
               type="text" 
@@ -84,15 +156,17 @@ const ContactForm = () => {
               name="name" 
               value={formData.name} 
               onChange={handleChange} 
-              className="bg-gray-700/50 border-gray-600 text-white focus:border-blue-400 focus:ring-blue-400" 
+              className={`bg-gray-700/50 border-gray-600 text-white focus:border-blue-400 focus:ring-blue-400 ${errors.name ? 'border-red-500' : ''}`}
               placeholder="Your Name" 
               required 
               disabled={isLoading}
+              maxLength={100}
             />
+            {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
           </div>
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-              Email
+              Email *
             </label>
             <Input 
               type="email" 
@@ -100,17 +174,19 @@ const ContactForm = () => {
               name="email" 
               value={formData.email} 
               onChange={handleChange} 
-              className="bg-gray-700/50 border-gray-600 text-white focus:border-blue-400 focus:ring-blue-400" 
+              className={`bg-gray-700/50 border-gray-600 text-white focus:border-blue-400 focus:ring-blue-400 ${errors.email ? 'border-red-500' : ''}`}
               placeholder="your.email@example.com" 
               required 
               disabled={isLoading}
+              maxLength={254}
             />
+            {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
           </div>
         </div>
 
         <div>
           <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
-            Subject
+            Subject *
           </label>
           <Input 
             type="text" 
@@ -118,16 +194,18 @@ const ContactForm = () => {
             name="subject" 
             value={formData.subject} 
             onChange={handleChange} 
-            className="bg-gray-700/50 border-gray-600 text-white focus:border-blue-400 focus:ring-blue-400" 
+            className={`bg-gray-700/50 border-gray-600 text-white focus:border-blue-400 focus:ring-blue-400 ${errors.subject ? 'border-red-500' : ''}`}
             placeholder="What's this about?" 
             required 
             disabled={isLoading}
+            maxLength={200}
           />
+          {errors.subject && <p className="text-red-400 text-xs mt-1">{errors.subject}</p>}
         </div>
 
         <div>
           <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-            Message
+            Message *
           </label>
           <Textarea 
             id="message" 
@@ -135,11 +213,13 @@ const ContactForm = () => {
             value={formData.message} 
             onChange={handleChange} 
             rows={5} 
-            className="bg-gray-700/50 border-gray-600 text-white focus:border-blue-400 focus:ring-blue-400 resize-none" 
+            className={`bg-gray-700/50 border-gray-600 text-white focus:border-blue-400 focus:ring-blue-400 resize-none ${errors.message ? 'border-red-500' : ''}`}
             placeholder="Tell me about your project..." 
             required 
             disabled={isLoading}
+            maxLength={1000}
           />
+          {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
         </div>
 
         <Button 
@@ -151,6 +231,10 @@ const ContactForm = () => {
           <Send className="h-5 w-5 mr-2" />
           {isLoading ? 'Sending...' : 'Send Message'}
         </Button>
+        
+        <p className="text-xs text-gray-400 text-center">
+          * Required fields. Your information is handled securely.
+        </p>
       </form>
     </div>
   );
