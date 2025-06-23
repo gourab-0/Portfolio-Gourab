@@ -1,4 +1,3 @@
-
 import { ExternalLink, Github, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -9,8 +8,8 @@ const Projects = () => {
       description: "Frontend-only e-commerce website with responsive design, product catalog, shopping cart functionality, and modern user interface built with vanilla web technologies.",
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
       technologies: ["HTML", "CSS", "JavaScript"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: "https://gourab-0.github.io/e-commerce-website/",
+      githubUrl: "https://github.com/gourab-0/e-commerce-website",
       featured: false
     },
     {
@@ -95,6 +94,7 @@ const Projects = () => {
                     <Button
                       size="sm"
                       className="bg-blue-600/90 hover:bg-blue-600 text-white backdrop-blur-sm border border-blue-400/30 shadow-lg"
+                      onClick={() => window.open(project.liveUrl, '_blank')}
                     >
                       <Play className="h-4 w-4 mr-1" />
                       Demo
@@ -103,6 +103,7 @@ const Projects = () => {
                       size="sm"
                       variant="outline"
                       className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm shadow-lg"
+                      onClick={() => window.open(project.githubUrl, '_blank')}
                     >
                       <Github className="h-4 w-4 mr-1" />
                       Code
@@ -143,6 +144,8 @@ const Projects = () => {
                   <div className="flex space-x-4 pt-2">
                     <a
                       href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center text-blue-400 hover:text-blue-300 text-sm transition-colors duration-300 group/link"
                     >
                       <ExternalLink className="h-4 w-4 mr-1 transition-transform duration-300 group-hover/link:scale-110" />
@@ -150,6 +153,8 @@ const Projects = () => {
                     </a>
                     <a
                       href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center text-gray-400 hover:text-gray-300 text-sm transition-colors duration-300 group/link"
                     >
                       <Github className="h-4 w-4 mr-1 transition-transform duration-300 group-hover/link:scale-110" />
